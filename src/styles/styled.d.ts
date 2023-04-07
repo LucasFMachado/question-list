@@ -10,6 +10,8 @@ declare module 'styled-components' {
       secondary: string
       secondaryLight: string
       secondaryDark: string
+      error: string
+      success: string
       text: string
       background: string
     }
