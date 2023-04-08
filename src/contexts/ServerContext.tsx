@@ -1,9 +1,9 @@
+import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
 import { createContext, useContext, useState } from 'react'
 
 import { api } from '@/services/api'
-
-type ServerStatus = 'UP' | 'DOWN'
+import { ServerStatus } from '@/types/globalTypes'
 
 interface ServerProps {
   children: ReactNode
@@ -17,15 +17,16 @@ interface ServerContextValues {
 const ServerContext = createContext({} as ServerContextValues)
 
 const ServerProvider = ({ children }: ServerProps) => {
+  const router = useRouter()
   const [serverStatus, setServerStatus] = useState<ServerStatus>('DOWN')
   const [loading, setLoading] = useState(false)
 
   async function getServerStatus() {
     try {
       setLoading(true)
-      const data = await api.get('/health')
-      console.log('datadata: ', data)
+      await api.get('/health')
       setServerStatus('UP')
+      router.push('/questions')
     } catch (error) {
       setServerStatus('DOWN')
     } finally {

@@ -3,16 +3,15 @@ import { darken, lighten } from 'polished'
 export default {
   title: 'dark',
   colors: {
-    primary: '#484450',
-    primaryLight: lighten(0.1, '#484450'),
-    primaryDark: darken(0.1, '#484450'),
-    secondary: '#5c32a8',
-    secondaryLight: lighten(0.1, '#5c32a8'),
-    secondaryDark: darken(0.1, '#5c32a8'),
-    text: '#fafafa',
+    primary: '#319795',
+    primaryLight: lighten(0.1, '#319795'),
+    primaryDark: darken(0.1, '#319795'),
+    secondary: '#4FD1C5',
+    secondaryLight: lighten(0.1, '#4FD1C5'),
+    secondaryDark: darken(0.1, '#4FD1C5'),
+    text: '#1D4044',
     error: '#db303c',
     success: '#61ab8f',
-    background:
-      'linear-gradient(to bottom, #484450, #433f4b, #3f3b46, #3a3642, #36323d)',
+    background: '#E6FFFA',
   },
 }
