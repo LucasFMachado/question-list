@@ -25,9 +25,10 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialised;
     width: 100vw;
     height: 100vh;
+    min-width: 768px;
 
-    header {
-      min-width: 48rem;
+    header, footer {
+      min-width: 768px;
     }
   }
 
@@ -48,8 +49,8 @@ export default createGlobalStyle`
   }
 
   a {
-      text-decoration: none;
-    }
+    text-decoration: none;
+  }
 
   [disabled] {
     opacity: 0.6;

@@ -2,6 +2,8 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
 
+import { Footer } from '@/components/Footer'
+import { Header } from '@/components/Header'
 import { QuestionsProvider } from '@/contexts/QuestionsContext'
 import { ServerProvider } from '@/contexts/ServerContext'
 
@@ -17,9 +19,11 @@ export default function App({ Component, pageProps }: AppProps) {
           <Head>
             <title>Frontend challenge | Lucas Machado</title>
           </Head>
+          <Header />
           <Wrapper>
             <Component {...pageProps} />
           </Wrapper>
+          <Footer />
           <GlobalStyle />
         </QuestionsProvider>
       </ServerProvider>

@@ -10,7 +10,8 @@ interface QuestionsProps {
 
 interface QuestionsContextValues {
   questions: any
-  getQuestions: () => Promise<void>
+  getQuestions: (filter?: string) => Promise<void>
+  getQuestionData: (questionId: number) => Promise<IQuestion>
   loading: boolean
 }
 const QuestionsContext = createContext({} as QuestionsContextValues)
@@ -19,11 +20,19 @@ const QuestionsProvider = ({ children }: QuestionsProps) => {
   const [questions, setQuestions] = useState<IQuestion[]>([])
   const [loading, setLoading] = useState(false)
 
-  async function getQuestions() {
+  async function getQuestions(filter = ''): Promise<void> {
     setLoading(true)
-    const { data } = await api.get('/questions?limit=10&offset=0&filter=""')
+    const filterUrl = filter ? `?filter=${filter}` : ''
+    const { data } = await api.get(`/questions${filterUrl}`)
     setQuestions(data)
     setLoading(false)
+  }
+
+  async function getQuestionData(questionId: number): Promise<IQuestion> {
+    setLoading(true)
+    const { data } = await api.get(`/questions/${questionId}`)
+    setLoading(false)
+    return data
   }
 
   return (
@@ -31,6 +40,7 @@ const QuestionsProvider = ({ children }: QuestionsProps) => {
       value={{
         questions,
         getQuestions,
+        getQuestionData,
         loading,
       }}
     >
