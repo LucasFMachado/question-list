@@ -1,7 +1,7 @@
 export type ServerStatus = 'UP' | 'DOWN'
 
 export interface IChoise {
-  choise: string
+  choice: string
   votes: number
 }
 

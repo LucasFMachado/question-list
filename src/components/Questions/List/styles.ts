@@ -8,4 +8,8 @@ export const List = styled.div`
   margin: auto;
   width: 50%;
   gap: 1.5rem;
+
+  @media (max-width: 1023px) {
+    width: 80%;
+  }
 `

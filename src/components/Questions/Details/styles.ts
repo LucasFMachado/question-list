@@ -1,18 +1,25 @@
 import styled from 'styled-components'
 
+export const Wrapper = styled.div`
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+`
+
 export const Item = styled.div`
   width: 100%;
   list-style: none;
   border-radius: 0.5rem;
   border: 1px solid ${props => props.theme.colors.text};
-  padding: 0.5rem;
-  display: grid;
-  grid-template-columns: auto 1fr;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
 
   img {
     border-radius: 0.5rem;
-    align-self: center;
   }
 
   .information {
@@ -28,15 +35,20 @@ export const Item = styled.div`
     }
 
     .actions {
-      text-align: end;
-      font-weight: 500;
-      margin-top: 0.5rem;
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-      a {
+      a,
+      button {
         border: none;
         cursor: pointer;
         background-color: transparent;
         color: ${props => props.theme.colors.text};
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        background-color: ${props => props.theme.colors.secondary};
 
         svg {
           height: 1rem;
@@ -47,13 +59,14 @@ export const Item = styled.div`
 
         :hover {
           color: ${props => props.theme.colors.primary};
+          background-color: ${props => props.theme.colors.secondaryDark};
         }
       }
     }
 
     .votes {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: auto 1fr;
       gap: 0.5rem;
 
       span {

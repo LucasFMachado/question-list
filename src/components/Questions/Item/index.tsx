@@ -10,7 +10,7 @@ interface IQuestionItemProps {
 }
 
 export function QuestionItem({ questionData }: IQuestionItemProps) {
-  const { id, thumb_url, question, published_at } = questionData
+  const { id, thumb_url, question, published_at, choices } = questionData
 
   return (
     <Item>
@@ -19,10 +19,12 @@ export function QuestionItem({ questionData }: IQuestionItemProps) {
         <h3>{question}</h3>
         <p>{new Intl.DateTimeFormat('pt-BR').format(new Date(published_at))}</p>
         <div className="votes">
-          <span>voto1</span>
-          <span>voto2</span>
-          <span>voto3</span>
-          <span>voto4</span>
+          {choices?.map(({ choice, votes }) => (
+            <span key={choice}>
+              {`${choice}: `}
+              <strong>{`${votes} votes`}</strong>
+            </span>
+          ))}
         </div>
         <div className="actions">
           <Link href={`/questions/${id}`}>
