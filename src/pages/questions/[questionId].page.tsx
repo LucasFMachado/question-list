@@ -9,7 +9,7 @@ import { IQuestion } from '@/types/globalTypes'
 export default function DetailScreen() {
   const router = useRouter()
   const { questionId } = router.query
-  const { getQuestionData, loading } = useQuestions()
+  const { getQuestionData, loading, submitVote } = useQuestions()
   const [question, setQuestion] = useState<IQuestion | undefined>(undefined)
   const [vote, setVote] = useState('')
 
@@ -19,9 +19,13 @@ export default function DetailScreen() {
     }
   }, [questionId])
 
-  async function submitVote() {
-    router.push('/questions')
+  async function handleVote() {
+    if (questionId) {
+      await submitVote(+questionId)
+      router.push('/questions')
+    }
   }
+
   if (loading || !question) {
     return <Loading />
   }
@@ -29,7 +33,7 @@ export default function DetailScreen() {
   return (
     <QuestionDetails
       questionData={question}
-      submitVote={submitVote}
+      handleVote={handleVote}
       vote={vote}
       setVote={setVote}
     />

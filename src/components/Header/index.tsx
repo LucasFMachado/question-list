@@ -12,8 +12,6 @@ export function Header() {
   const [search, setSearch] = useState('')
   const { getQuestions } = useQuestions()
 
-  console.log('router', router)
-
   return (
     <Component>
       <div>

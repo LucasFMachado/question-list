@@ -12,6 +12,7 @@ interface QuestionsContextValues {
   questions: any
   getQuestions: (filter?: string) => Promise<void>
   getQuestionData: (questionId: number) => Promise<IQuestion>
+  submitVote: (questionId: number) => Promise<void>
   loading: boolean
 }
 const QuestionsContext = createContext({} as QuestionsContextValues)
@@ -35,12 +36,19 @@ const QuestionsProvider = ({ children }: QuestionsProps) => {
     return data
   }
 
+  async function submitVote(questionId: number): Promise<void> {
+    setLoading(true)
+    await api.put(`/questions/${questionId}`)
+    setLoading(false)
+  }
+
   return (
     <QuestionsContext.Provider
       value={{
         questions,
         getQuestions,
         getQuestionData,
+        submitVote,
         loading,
       }}
     >
