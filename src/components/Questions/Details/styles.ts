@@ -40,7 +40,6 @@ export const Item = styled.div`
       justify-content: space-between;
       align-items: center;
 
-      a,
       button {
         border: none;
         cursor: pointer;
@@ -50,17 +49,26 @@ export const Item = styled.div`
         border-radius: 0.5rem;
         background-color: ${props => props.theme.colors.secondary};
 
-        svg {
-          height: 1rem;
-          width: 1rem;
-          position: relative;
-          top: 2px;
-        }
-
         :hover {
           color: ${props => props.theme.colors.primary};
           background-color: ${props => props.theme.colors.secondaryDark};
         }
+      }
+
+      a {
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        color: ${props => props.theme.colors.text};
+        background-color: ${props => props.theme.colors.error};
+      }
+
+      svg {
+        height: 1rem;
+        width: 1rem;
+        position: relative;
+        top: 2px;
       }
     }
 
